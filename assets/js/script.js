@@ -3,9 +3,7 @@ const dateTime = luxon.DateTime;
 const today = dateTime.now().setZone("system");
 $('#currentDay').text(today.toLocaleString(dateTime.DATE_HUGE));
 
-//Present timeblocks for business hours (9am-5pm)
-
-//Color-code each timeblock based on past, present, and future
+//Color-code timeblocks based on past, present, and future
 
 //Allow a user to enter an event when they click a timeblock
 
