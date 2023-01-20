@@ -55,7 +55,7 @@ SO THAT I can manage my time effectively
 ### Built with
 
 - jQuery
-- Moment.js
+- Luxon
 - JavaScript
 - HTML
 - CSS

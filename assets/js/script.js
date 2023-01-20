@@ -1,17 +1,16 @@
-const currentDay = document.querySelector('#currentDay');
-
-
 //Display the current day at the top of the calendar
-let today = moment();
-$('#currentDay').text(today.format ('MMMM Do YYYY'));
+const dateTime = luxon.DateTime;
+const today = dateTime.now().setZone("system");
+$('#currentDay').text(today.toLocaleString(dateTime.DATE_HUGE));
 
-//Present timeblocks for standard business hours when the user scrolls down.
 
-//Color-code each timeblock based on past, present, and future when the timeblock is viewed.
+//Present timeblocks for business hours (9am-5pm)
 
-//Allow a user to enter an event when they click a timeblock.
+//Color-code each timeblock based on past, present, and future
 
-//Save the event in local storage when the save button is clicked in that timeblock.
+//Allow a user to enter an event when they click a timeblock
+
+//Save the event in local storage when the save button is clicked in that timeblock
 
 //Persist events between refreshes of a page.
 
