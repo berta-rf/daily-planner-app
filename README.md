@@ -36,9 +36,9 @@ The app:
 ### User Story
 
 ```md
-AS AN employee with a busy schedule
-I WANT to add important events to a daily planner
-SO THAT I can manage my time effectively
+AS AN employee with a busy schedule,
+I WANT to add important events to a daily planner,
+SO THAT I can manage my time effectively.
 ```
 
 ### Screenshot
@@ -69,10 +69,10 @@ SO THAT I can manage my time effectively
 
 ## Author
 
-- Berta Romano Fernandez [bertaromanofernandez@gmail.com]
-- GitHub - [berta-rf](https://github.com/berta-rf)
-- LinkedIn - [Berta Romano Fernandez](https://www.linkedin.com/in/berta-romano-fernandez-85a51117a/)
-- Frontend Mentor - [@berta-rf](https://www.frontendmentor.io/profile/)
+- Berta Romano Fernandez [bertaromanofernandez@gmail.com](mailto:bertaromanofernandez@gmail.com)
+- GitHub [berta-rf](https://github.com/berta-rf)
+- LinkedIn [Berta Romano Fernandez](https://www.linkedin.com/in/berta-romano-fernandez-85a51117a/)
+- Frontend Mentor [@berta-rf](https://www.frontendmentor.io/profile/)
 
 ## License
 
