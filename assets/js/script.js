@@ -1,39 +1,62 @@
 $(document).ready(function() {
     
-    const timeblocks = [9, 10, 11, 12, 13, 14, 15, 16, 17];
+    const defaultTimeblocks = [
+        {hour: 9, toDo: null},
+        {hour: 10, toDo: null},
+        {hour: 11, toDo: null},
+        {hour: 12, toDo: null},
+        {hour: 13, toDo: null},
+        {hour: 14, toDo: null},
+        {hour: 15, toDo: null},
+        {hour: 16, toDo: null},
+        {hour: 17, toDo: null},
+    ];
     
+
+    //Save the event in local storage when the save button is clicked in that timeblock
+    //Persist events between refreshes of a page.
+    let agenda;
+
+    if (!localStorage.getItem('agenda')) {
+        localStorage.setItem('agenda', JSON.stringify(defaultTimeblocks));
+        agenda = defaultTimeblocks;
+    } else {
+        agenda = JSON.parse(localStorage.getItem('agenda'));
+    }
+
     //Display the current day at the top of the calendar
     const dateTime = luxon.DateTime;
     const today = dateTime.now().setZone("system");
     $('#currentDay').text(today.toLocaleString(dateTime.DATE_HUGE));
     
-    //Color-code timeblocks based on past, present, and future
+    //Display color-coded timeblocks (past, present, and future)
     displayTimeblocks();
 
     function displayTimeblocks() {
 
-        for (let i = 0; i < timeblocks.length; i++) {
+        for (let i = 0; i < agenda.length; i++) {
             
-            let rowDate = today.set({hour: timeblocks[i], minutes: 0});
+            let rowDate = today.set({hour: agenda[i].hour, minutes: 0});
             let rowHour = rowDate.hour;
-            
-            var timeblockRow = $(
+
+            let agendaHour = rowDate.toLocaleString(dateTime.TIME_24_SIMPLE);
+            // if agenda toDo null, return empty string
+            let eventInfo = agenda[i].toDo ? agenda[i].toDo : '';
+
+            let timeblockRow = $(
                 `
-                <div class="row">
-                    <div class="time col"></div>
-                    <div class="col-9">
-                        <form class="form-group">
+                <div class="row" data-time-index="${i}">
+                    <div class="time col">${agendaHour}</div>
+                    <div class="col-10">
+                        <form class="d-flex">
                             <label for="FormTextarea"></label>
-                            <textarea class="form-control" id="FormTextarea"></textarea>
-                        </div>
-                        <button type="submit" class="btn save col">&#10133</button>
+                            <textarea class="form-control">${eventInfo}</textarea>
+                           <button type="submit" class="btn save">&#10133</button>
                         </form>
-                    </div>    
+                    </div> 
                 </div>
                 `
             );
-
-           $(timeblockRow).find('.time').text(rowDate.toLocaleString(dateTime.TIME_24_SIMPLE));
 
            $('.container').append(timeblockRow);
                 
@@ -51,16 +74,16 @@ $(document).ready(function() {
             }
         }
 
+
+        $('.btn').on('click', function(e){
+            e.preventDefault();
+            let eventInfo = $(this).parent().find('textarea').val();
+            let i = $(this).parent().parent().parent().data('timeIndex');
+            agenda[i].toDo = eventInfo;
+            localStorage.setItem('agenda', JSON.stringify(agenda));
+
+        });
+
     }
    
-    //Allow a user to enter an event when they click a timeblock 
-    //Save the event in local storage when the save button is clicked in that timeblock
-    //Persist events between refreshes of a page.
-
-
-
-
-
-
-
 }); 
