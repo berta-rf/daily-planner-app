@@ -19,19 +19,19 @@
 
 This application is a simple calendar app that allows the user to save events for each hour of the day. This app runs in the browser, and features dynamically updated HTML and CSS powered by jQuery.
 
-The app should:
+The app:
 
-- Display the current day at the top of the calendar when a user opens the planner.
+- Displays the current day at the top of the calendar when a user opens the planner.
 
-- Present timeblocks for standard business hours when the user scrolls down.
+- Presents timeblocks for standard business hours when the user scrolls down.
 
-- Color-code each timeblock based on past, present, and future when the timeblock is viewed.
+- Color-codes each timeblock based on past, present, and future when the timeblock is viewed.
 
-- Allow a user to enter an event when they click a timeblock.
+- Allows a user to enter an event when they click a timeblock.
 
-- Save the event in local storage when the save button is clicked in that timeblock.
+- Saves the event in local storage when the save button is clicked in that timeblock.
 
-- Persist events between refreshes of a page.
+- Persists events between refreshes of a page.
 
 ### User Story
 
@@ -43,7 +43,7 @@ SO THAT I can manage my time effectively
 
 ### Screenshot
 
-![](.)
+![](./assets/images/screencapture.png)
 
 ### Links
 
@@ -63,9 +63,9 @@ SO THAT I can manage my time effectively
 
 ### Useful resources
 
-- [W3 Schools on addEventListener()](https://www.w3schools.com/jsref/met_element_addeventlistener.asp)
-- [MDN Web Docs on Object.entries()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/entries)
-- [Adding sound to JS Web Apps](https://noaheakin.medium.com/adding-sound-to-your-js-web-app-f6a0ca728984)
+- [Luxon API docs](https://moment.github.io/luxon/api-docs/index.html#datetimenow)
+- [Article on localStorage](https://blog.logrocket.com/localstorage-javascript-complete-guide/#howdoeslocalstoragework)
+- [jQuery documentation on .data()](https://api.jquery.com/data/)
 
 ## Author
 
