@@ -1,6 +1,7 @@
 body {
-  font-family: 'Roboto Mono', monospace;  font-size: 16px;
+  font-family: 'Roboto Mono', monospace;
   background-color: whitesmoke;
+  font-size: 20px;
 }
 
 .jumbotron {
@@ -20,21 +21,18 @@ body {
   border: 0;
 }
 
-.time-block {
-  text-align: center;
-  border-radius: 15px;
-}
-
 .row {
   border-radius: 30px;
+  margin: 5px;
+  padding: 10px;
 }
 
 .time {
   background-color: rgba(244, 218, 234, 0.612);
   color: #000000;
+  font-size: 30px;
   border-radius: 30px;
   border: 1px solid whitesmoke;
-
 } 
 
 .past {
@@ -53,13 +51,11 @@ body {
 }
 
 .save {
-  border-radius: 30px;
   background-color: #f48ed7;
-  border: 1px dashed black;
+  border: 1px solid #542145cf;
 }
 
 .save:hover {
-  font-size: 20px;
   transition: all 0.3s ease-in-out;
   background-color: #542145cf;
 }

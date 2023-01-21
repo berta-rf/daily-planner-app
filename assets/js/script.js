@@ -12,8 +12,6 @@ $(document).ready(function() {
         {hour: 17, toDo: null},
     ];
     
-
-    //Save the event in local storage when the save button is clicked in that timeblock
     //Persist events between refreshes of a page.
     let agenda;
 
@@ -29,7 +27,7 @@ $(document).ready(function() {
     const today = dateTime.now().setZone("system");
     $('#currentDay').text(today.toLocaleString(dateTime.DATE_HUGE));
     
-    //Display color-coded timeblocks (past, present, and future)
+    //Generate/Display timeblocks for business hours (9-17h) 
     displayTimeblocks();
 
     function displayTimeblocks() {
@@ -50,8 +48,8 @@ $(document).ready(function() {
                     <div class="col-10">
                         <form class="d-flex">
                             <label for="FormTextarea"></label>
-                            <textarea class="form-control">${eventInfo}</textarea>
-                           <button type="submit" class="btn save">&#10133</button>
+                            <textarea class="form-control m-3">${eventInfo}</textarea>
+                           <button type="submit" class="btn save m-2">&#10133</button>
                         </form>
                     </div> 
                 </div>
@@ -59,7 +57,9 @@ $(document).ready(function() {
             );
 
            $('.container').append(timeblockRow);
-                
+              
+           
+        // Change timeblock background color (past, present, and future)
             if (today.hour > rowHour) {
                 
                 $(timeblockRow).addClass("past");
@@ -74,7 +74,7 @@ $(document).ready(function() {
             }
         }
 
-
+        // When click + button, save event/toDo to localstorage
         $('.btn').on('click', function(e){
             e.preventDefault();
             let eventInfo = $(this).parent().find('textarea').val();
