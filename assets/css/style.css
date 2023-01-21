@@ -1,24 +1,23 @@
 body {
-  font-family: 'Open Sans', sans-serif;
-  font-size: 16px;
-  line-height: 1;
-}
-
-textarea {
-  background: transparent;
-  border: none;
-  resize: none;
-  color: #000000;
-  border-left: 1px solid black;
-  width: 100%;
+  font-family: 'Roboto Mono', monospace;  font-size: 16px;
+  background-color: whitesmoke;
 }
 
 .jumbotron {
   text-align: center;
   background-color: transparent;
   color: black;
-  border-radius: 0;
   border-bottom: 10px solid black;
+}
+
+#currentDay {
+  color: #f48ed7;
+  font-size: 35px;
+}
+
+.form-control {
+  background: transparent;
+  border: 0;
 }
 
 .time-block {
@@ -27,43 +26,42 @@ textarea {
 }
 
 .row {
-  white-space: pre-wrap;
-  height: 80px;
-  border-top: 1px solid white;
+  border-radius: 30px;
 }
 
 .time {
   background-color: rgba(244, 218, 234, 0.612);
   color: #000000;
-  border-top: 1px dashed #000000;
-}
+  border-radius: 30px;
+  border: 1px solid whitesmoke;
+
+} 
 
 .past {
   background-color: #b4b3b3;
-  color: white;
+  color: black;
 }
 
 .present {
   background-color: #eae079;
-  color: rgb(229, 208, 208);
+  color: black;
 }
 
 .future {
   background-color: #77dd77;
-  color: white;
+  color: black;
 }
 
 .save {
-  border-left: 1px solid black;
-  border-top-right-radius: 15px;
-  border-bottom-right-radius: 15px;
-  background-color: #f48ed7cf;
-  color: white;
+  border-radius: 30px;
+  background-color: #f48ed7;
+  border: 1px dashed black;
 }
 
 .save:hover {
   font-size: 20px;
   transition: all 0.3s ease-in-out;
+  background-color: #542145cf;
 }
 
 

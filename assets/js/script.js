@@ -1,15 +1,61 @@
-//Display the current day at the top of the calendar
-const dateTime = luxon.DateTime;
-const today = dateTime.now().setZone("system");
-$('#currentDay').text(today.toLocaleString(dateTime.DATE_HUGE));
+$(document).ready(function() {
+    
+    const timeblocks = [9, 10, 11, 12, 13, 14, 15, 16, 17];
+    
+    //Display the current day at the top of the calendar
+    const dateTime = luxon.DateTime;
+    const today = dateTime.now().setZone("system");
+    $('#currentDay').text(today.toLocaleString(dateTime.DATE_HUGE));
+    
+    //Color-code timeblocks based on past, present, and future
+    displayTimeblocks();
 
-//Color-code timeblocks based on past, present, and future
+    function displayTimeblocks() {
 
-//Allow a user to enter an event when they click a timeblock
+        for (let i = 0; i < timeblocks.length; i++) {
+            
+            let rowDate = today.set({hour: timeblocks[i], minutes: 0});
+            let rowHour = rowDate.hour;
+            
+            var timeblockRow = $(
+                `
+                <div class="row">
+                    <div class="time col"></div>
+                    <div class="col-9">
+                        <form class="form-group">
+                            <label for="FormTextarea"></label>
+                            <textarea class="form-control" id="FormTextarea"></textarea>
+                        </div>
+                        <button type="submit" class="btn save col">&#10133</button>
+                        </form>
+                    </div>    
+                </div>
+                `
+            );
 
-//Save the event in local storage when the save button is clicked in that timeblock
+           $(timeblockRow).find('.time').text(rowDate.toLocaleString(dateTime.TIME_24_SIMPLE));
 
-//Persist events between refreshes of a page.
+           $('.container').append(timeblockRow);
+                
+            if (today.hour > rowHour) {
+                
+                $(timeblockRow).addClass("past");
+                
+            } else if (today.hour == rowHour) {
+                
+                $(timeblockRow).addClass("present");
+
+            } else if (today.hour < rowHour) {
+                
+                $(timeblockRow).addClass("future");
+            }
+        }
+
+    }
+   
+    //Allow a user to enter an event when they click a timeblock 
+    //Save the event in local storage when the save button is clicked in that timeblock
+    //Persist events between refreshes of a page.
 
 
 
@@ -17,43 +63,4 @@ $('#currentDay').text(today.toLocaleString(dateTime.DATE_HUGE));
 
 
 
-
-// var shoppingFormEl = $('#shopping-form');
-// var shoppingListEl = $('#shopping-list');
-
-// function handleFormSubmit(event) {
-//   event.preventDefault();
-
-//   var shoppingItem = $('input[name="shopping-input"]').val();
-
-//   if (!shoppingItem) {
-//     console.log('No shopping item filled out in form!');
-//     return;
-//   }
-
-//   var shoppingListItemEl = $(
-//     '<li class="flex-row justify-space-between align-center p-2 bg-light text-dark">'
-//   );
-//   shoppingListItemEl.text(shoppingItem);
-
-//   // add delete button to remove shopping list item
-//   shoppingListItemEl.append(
-//     '<button class="btn btn-danger btn-small delete-item-btn">Remove</button>'
-//   );
-
-//   // print to the page
-//   shoppingListEl.append(shoppingListItemEl);
-
-//   // clear the form input element
-//   $('input[name="shopping-input"]').val('');
-// }
-
-// // TODO: Create a function to handle removing a list item when `.delete-item-btn` is clicked
-// shoppingListEl.on( "click", ".delete-item-btn", function(event) {
-//   event.preventDefault();
-//   $(this).parent().remove();
-
-// });
-
-// // TODO: Use event delegation and add an event listener to `shoppingListEl` to listen for a click event on any element with a class of `.delete-item-btn` and execute the function created above
-// shoppingFormEl.on('submit', handleFormSubmit);
+}); 
