@@ -75,7 +75,7 @@ $(document).ready(function() {
         }
 
         // When click + button, save event/toDo to localstorage
-        $('.btn').on('click', function(e){
+        $('.save').on('click', function(e){
             e.preventDefault();
             let eventInfo = $(this).parent().find('textarea').val();
             let i = $(this).parent().parent().parent().data('timeIndex');
@@ -83,7 +83,13 @@ $(document).ready(function() {
             localStorage.setItem('agenda', JSON.stringify(agenda));
 
         });
-
     }
+
+
+    $('#clearBtn').on('click', function(){
+
+        localStorage.clear();
+        location.reload();
+    });
    
 }); 
